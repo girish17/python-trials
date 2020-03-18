@@ -1,3 +1,5 @@
+''' @author: prince '''
+
 choice = 'y'
 shapes = {'1':'line', '2': 'angle', '3': 'triangle', '4': ['square', 'rectangle', 'rhombus', 'trapezoid', 'trapezium', 'quadrilateral', 'parallelogram'],
           '5': 'pentagon', '6': 'hexagon', '7': ['septagon', 'heptagon'], '8': 'octagon', '9': 'nonagon', '10': 'decagon',
