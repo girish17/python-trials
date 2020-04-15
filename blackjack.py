@@ -52,8 +52,8 @@ else:
             else:
                 count += cards[newCard]
                 if count > 21:
-                    count = count-10+cards[newCard]
-                firstHandCheck = False
+                    count = count-10
+            firstHandCheck = False
         else:
             count += cards[newCard]
 
