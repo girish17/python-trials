@@ -1,6 +1,7 @@
 import random
 import unicodedata
 
+#all the variables used
 choice = 'hit'
 cards = {'A of Hearts':11, '2 of Hearts': 2, '3 of Hearts': 3, '4 of Hearts': 4, '5 of Hearts': 5, '6 of Hearts': 6, '7 of Hearts' : 7, '8 of Hearts' : 8, '9 of Hearts' : 9, '10 of Hearts' : 10, 'J of Hearts' : 10, 'Q of Hearts' : 10, 'K of Hearts' : 10,
          'A of Spades':11, '2 of Spades': 2, '3 of Spades': 3, '4 of Spades': 4, '5 of Spades': 5, '6 of Spades': 6, '7 of Spades' : 7, '8 of Spades' : 8, '9 of Spades' : 9, '10 of Spades' : 10, 'J of Spades' : 10, 'Q of Spades' : 10, 'K of Spades' : 10,
@@ -12,11 +13,16 @@ playingCardUnicode = {'A of Hearts':'\U0001F0B1', '2 of Hearts': '\U0001F0B2', '
          'A of Clubs': '\U0001F0D1', '2 of Clubs': '\U0001F0D2', '3 of Clubs': '\U0001F0D3', '4 of Clubs': '\U0001F0D4', '5 of Clubs': '\U0001F0D5', '6 of Clubs': '\U0001F0D6', '7 of Clubs' : '\U0001F0D7', '8 of Clubs' : '\U0001F0D8', '9 of Clubs' : '\U0001F0D9', '10 of Clubs' : '\U0001F0DA', 'J of Clubs' : '\U0001F0DB', 'Q of Clubs' : '\U0001F0DD', 'K of Clubs' : '\U0001F0DE'}
 count = 0
 firstHandCheck = True
+#it will contain the values for the dealt cards
+dealtCards = []
+
 firstCard = random.choice(list(cards.keys()))
+dealtCards.append(cards[firstCard])
 count += cards[firstCard]
 #since the card is dealt, we shall remove it from the deck
 cards.pop(firstCard)
 secondCard = random.choice(list(cards.keys()))
+dealtCards.append(cards[secondCard])
 count += cards[secondCard]
 #since the card is dealt, we shall remove it from the deck
 cards.pop(secondCard)
@@ -38,6 +44,7 @@ else:
     choice = input('Hit or stay (type hit or stay): ')
     while choice in ['hit', 'yes', 'y', 'h']:
         newCard = random.choice(list(cards.keys()))
+        dealtCards.append(cards[newCard])
         #this is to print the unicode symbol for playing cards
         symbolOfNewCard = unicodedata.name(playingCardUnicode[newCard])
         print("Your new card is: ", unicodedata.lookup(symbolOfNewCard))
@@ -55,7 +62,21 @@ else:
                     count = count-10
             firstHandCheck = False
         else:
-            count += cards[newCard]
+            count = 0
+            noOfAces = 0
+            #first adding score of all non-aces
+            for cardValue in dealtCards:
+                if cardValue ==  11:
+                    noOfAces += 1
+                else:
+                    count += cardValue
+            #finally, adding aces
+            while noOfAces != 0:
+                if count+11 > 21:
+                    count += 1
+                else:
+                    count += 11
+                noOfAces -= 1
 
         #since the card is dealt, we shall remove it from the deck
         cards.pop(newCard)    
