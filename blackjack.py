@@ -1,7 +1,9 @@
+# authors:  girish, prince
+
 import random
 import unicodedata
 
-
+# contains the core blackjack game logic, allows the player to play
 def playGame(playerName):
     print(playerName + ' is playing...')
     # all the variables used
@@ -124,6 +126,8 @@ def playGame(playerName):
         print(playerName + "'s final score is: ", count)
 
     return count
+
+# entry point for the program, takes player names and starts game
 
 
 if __name__ == '__main__':
