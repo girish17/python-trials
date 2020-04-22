@@ -1,3 +1,4 @@
+# @author prince
 n = input('Enter your age. I will tell you when you would turn 100 years old: ')
 n = int(n)
 an = ((2020 - n)+100)
