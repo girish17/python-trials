@@ -1,11 +1,14 @@
+#@author prince
 import random
 rn = random.choice(range(1000, 10000))
 rnlist = list(str(rn))
 choice = 'no'
 cows = 0
 bulls = 0
+score = 0
 while choice == 'no':
     n = input('[write 0000 to give up.] enter a 4-digit number: ')
+    score += 1
     a = n[0::5]
     b = n[1::4]
     c = n[2::4]
@@ -15,7 +18,7 @@ while choice == 'no':
     rc = int(rnlist[2])
     rd = int(rnlist[3])
     if int(n) == rn:
-        print('You Won!')
+        print('You Won! You guessed the number in', score, 'guesses!')
         choice = 'yes'
     else:
         if int(a) == ra:
